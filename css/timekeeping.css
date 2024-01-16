@@ -1,0 +1,287 @@
+/*! 
+* @package IcoFont version 1.0.1 
+* @author IcoFont https://icofont.com 
+* @copyright Copyright (c) 2015 - 2022 IcoFont 
+* @license - https://icofont.com/license/
+*/
+@font-face{
+    font-family: IcoFont;
+    font-weight: 400;
+    src: url('../fonts/icofont-full.woff2') format('woff2');
+    src: url('../fonts/icofont-full.woff') format('woff'); 
+    src: url('../fonts/icofont-full.ttf') format('truetype');
+}
+/*! 
+* @package LineAwesome version 1.3.0 
+* @author icons8 https://icons8.com/line-awesome 
+* @license - free to use
+* please link to icons8 somewhere on your page
+*/
+@font-face{
+    font-family: LineAwesome;
+    font-weight: 400;
+    src: url('../fonts/la-regular-400.woff2') format('woff2');
+    src: url('../fonts/la-regular-400.woff') format('woff');
+    src: url('../fonts/la-regular-400.ttf') format('truetype');
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-size: 1rem;
+    --primary-font: 'Roboto';
+    --secondary-font: 'Raleway';
+    --alternate-primary-font: 'Source Sans Pro';
+    --alternate-secondary-font: 'Montserrat';
+    --monospace-font: 'Source Code Pro';
+    --primary-color: #1a1a1a;
+    --secondary-color: #000000;
+    --primary-bgr: #ffffff;
+    --primary-bgr-transparent: #ffffff80;
+    --secondary-bgr: #f0f0f0;
+    --primary-accent: #fa2759;
+/*    --secondary-accent: #2dfcd8;*/
+    --secondary-accent: #2dd0ac;
+    --language-link-color: blue;
+    --language-link-hover-color: blue;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: var(--primary-font);
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    -webkit-transition: opacity 200ms ease-in-out;
+}
+
+.icon {
+    font-family: 'IcoFont';
+}
+
+.menu-icon-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: inherit;
+    max-height: 100vh;
+    max-width: calc(var(--font-size) * 4);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    /*left: 0;*/
+    background-color: white;
+    border-right: 1px solid lightgray;
+}
+
+#show-working-hours {
+    font-family: 'IcoFont';
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+}
+
+#show-working-hours img {
+    width: 90%;
+}
+
+#help-icon {
+    font-family: 'IcoFont';
+    font-size: calc(var(--font-size) * 1.7);
+    cursor: pointer;
+    user-select: none;
+    display: initial;
+    justify-content: center;
+}
+
+#user-profile {
+    font-family: 'IcoFont';
+    font-size: calc(var(--font-size) * 1.3);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+}
+
+#timekeeping-container {
+    /*width: calc(100vw - 4rem);*/
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    background-color: aliceblue;
+    flex-direction: row;
+    overflow: auto;
+    justify-content: flex-start;
+    position: relative;
+    /*left: calc(var(--font-size) * 4);*/
+    top: calc(var(--font-size) * 0);
+    max-width: 1920px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 20px 1px rgba(30, 30, 30, .1);
+}
+
+.timekeeping {
+    width: fit-content;
+    display: flex;
+    grid-gap: calc(var(--font-size) * 3);
+    margin-left: calc(var(--font-size) * (3.0 + 4.0));
+    margin-top: calc(var(--font-size) * 2.5);
+    margin-bottom: calc(var(--font-size) * 2.5);
+    margin-right: calc(var(--font-size) * 3.0);
+}
+
+.modal-container,
+.login-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    z-index: 999;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    background-color: #00000080;
+    color: white;
+    transition: opacity 400ms ease-in-out;
+    -webkit-transition: opacity 400ms ease-in-out;
+    opacity: 0;
+    display: none;
+}
+
+.modal {
+    min-width: 50%;
+    min-height: 50%;
+    background-color: #e0e0e0f0;
+    color: #1a1a1a;
+    border-radius: calc(var(--font-size) * .1);
+    cursor: default;
+    overflow: auto;
+}
+
+.modal-data ul {
+    padding: 0 calc(var(--font-size) * 2);
+    text-align: left;
+    list-style-position: inside;
+    max-width: fit-content;
+    margin: calc(var(--font-size) * 1.25) auto;
+}
+
+.modal-data li {
+    display: flex;
+    justify-content: space-between;
+    font-size: calc(var(--font-size) * 1.2);
+    margin-bottom: calc(var(--font-size) * .5);
+}
+
+.modal-data li div:nth-child(2) {
+    font-family: 'LineAwesome';
+    cursor: pointer;
+    margin-left: calc(var(--font-size) * 1.0);
+}
+
+.modal-data button {
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-data li input, .modal-data li button {
+    margin-bottom: calc(var(--font-size) * 1.0);
+}
+
+.modal-data li input {
+    max-width: 60%;
+    min-width: 40%;
+    padding: calc(var(--font-size) * 0.5);
+}
+
+.modal-data li button {
+    min-width: 30%;
+    max-width: 100%;
+    margin-top: calc(var(--font-size) * 1.0);
+}
+
+.modal-data .modal-data-delete-button {
+    padding: 0;
+    margin: 0;
+    color:#fa2759;
+    display: none;
+}
+
+.modal-data .modal-help-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-help-row p {
+    margin: 0;
+}
+
+.modal-data .working-hours-item {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ws-login {
+    min-width: 70%;
+    max-width: 100%;
+    max-height: 100vh;
+    /*left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);*/
+    box-shadow: 1px 1px 5px 0px grey;
+    border-radius: calc(var(--font-size) * .1);
+    cursor: default;
+    overflow-y: auto;
+}
+
+.menu-icon-bar div {
+    margin-top: calc(var(--font-size) * .05);
+    padding: calc(var(--font-size) * .5) calc(var(--font-size) * 1.0) calc(var(--font-size) * .5) calc(var(--font-size) * 1.0);
+}
+
+.menu-icon-bar div:first-child {
+    margin-top: calc(var(--font-size) * .6);
+}
+
+
+@media only screen and (min-height: 428px) {
+    .menu-icon-bar div {
+        margin-top: calc(var(--font-size) * .6);
+    }
+}
+
+@media only screen and (min-height: 480px) {
+    .menu-icon-bar div {
+        margin-top: calc(var(--font-size) * .6);
+    }
+    #help-icon {
+        display: initial;
+    }
+}
+
+@media only screen and (min-height: 540px) {
+    .menu-icon-bar div {
+        margin-top: calc(var(--font-size) * .8);
+    }
+    .menu-icon-bar div:first-child {
+        margin-top: calc(var(--font-size) * .8);
+    }
+}
