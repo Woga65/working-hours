@@ -3,31 +3,32 @@ import { openModal, closeModal } from "./modal.js";
 import { submitRequest } from "../components/ws-login/ws-login.js";
 
 const dateInput = {
-    value: "",
+    value: getCurrentDate(),
 };
 
 
 /** show working hours */
 function showWorkingHoursModal() {
-    renderWorkingHoursModal('workingHours');
-    openModal();
-    document.getElementById("modal-close").focus();
+    renderWorkingHoursModal()
+        .then(_ => {
+            openModal();
+            document.getElementById("modal-close").focus();
+        });
 }
 
 
 /** render working hours modal */
-async function renderWorkingHoursModal(topic) {
-    //await submitRequest('public/api/workinghours', {})
-        //.then(result => {
-        //    if (result.ok) {
-        //    
-        //    } else {
-        //
-        //    }  
-        //});
+async function renderWorkingHoursModal() {
     const modal = document.getElementById("modal-container");
-    modal.innerHTML = modalTemplate(topic, { workingHours: [{from: "8:30", to: "17:33"}, {from: "20.12", to: "21.46"},] });
-    addModalListeners(topic);
+    await submitRequest('public/api/workinghours', { workingDay: dateInput.value.slice(0,10)})
+        .then(result => {
+            if (result.ok) {
+                modal.innerHTML = modalTemplate(result.data);
+            } else {
+                console.log('err: ', result)
+            }
+            addModalListeners();  
+        });
 }
 
 
@@ -40,13 +41,13 @@ function getCurrentDate(d = new Date()) {
 
 
 /** add event listeners for closing modal dialog */
- function addModalListeners(topic) {
+ function addModalListeners() {
     const modalClose = document.getElementById('modal-close');
     const modalContainer = document.getElementById('modal-container');
     const modalDateInput = document.getElementById('modal-working-hours-at');
     modalClose.addEventListener('click', closeWorkingHoursModal);
     modalContainer.addEventListener('click', clickedOutside);
-    modalDateInput.addEventListener('change', dateInputChanged.bind(null, topic));
+    modalDateInput.addEventListener('change', dateInputChanged);
 }
 
 
@@ -62,11 +63,10 @@ function removeModalListeners() {
 
 
 /** event listener - date input has changed */
-function dateInputChanged(topic, e) {
+function dateInputChanged(e) {
     dateInput.value = e.target.value;
-    console.log("val: ", dateInput.value, " valNum: ", e.target.valueAsNumber, " valDate: ", e.target.valueAsDate);
     removeModalListeners();
-    renderWorkingHoursModal(topic);
+    renderWorkingHoursModal();
 }
 
 
@@ -86,9 +86,11 @@ function clickedOutside(e) {
 
 
 /** fill modal with data */
-function modalTemplate(topic, data) {
+function modalTemplate(data) {
     let dataList = '';
-    data[topic].forEach((d, i) => dataList += modalDataItemTemplate(i, d));
+    data.forEach((d, i) => {
+        dataList += modalDataItemTemplate(i, { from: d.wh_start_time.slice(11,16), to: d.wh_end_time.slice(11,16) });
+    });
     return `
         <div id="modal" class="modal">
             <div class="modal-msg">

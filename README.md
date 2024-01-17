@@ -4,7 +4,11 @@ A JavaScript and PHP based tool for tracking the daily working hours.
 
 ## current state
 
-Development in progress.
+Basic features working.
+@TODO: notification email
+@TODO: move configuration to one single place
+@TODO: replace Lorem Ipsum by actual help text
+@TODO: as always, refactoring
 
 ## tech stack used
 

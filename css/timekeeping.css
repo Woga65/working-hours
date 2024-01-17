@@ -133,6 +133,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     grid-gap: calc(var(--font-size) * 3);
     margin-left: calc(var(--font-size) * (3.0 + 4.0));
     margin-top: calc(var(--font-size) * 2.5);
@@ -271,6 +272,12 @@ body {
     cursor: pointer;
 }
 
+.start-button:disabled,
+.stop-button:disabled {
+    opacity: .3;
+    cursor: default;
+}
+
 .start-button {
     padding: calc(var(--font-size) * 1.0);
     padding-left: calc(var(--font-size) * 1.5);
@@ -289,6 +296,7 @@ body {
     border-left: 50px solid var(--secondary-accent);
     border-bottom: 25px solid transparent;
     padding: 0;
+    pointer-events: none;
 }
 
 .stop-button div {
@@ -297,8 +305,14 @@ body {
     padding: 0;
     border: 2px solid var(--primary-accent);
     background-color: var(--primary-accent);
+    pointer-events: none;
 }
 
+@media only screen and (min-width: 428px) {
+    .timekeeping {
+        flex-direction: row;
+    }
+}
 
 @media only screen and (min-height: 428px) {
     .menu-icon-bar div {

@@ -5,18 +5,15 @@ HttpMisc::allowMethods(['POST']);
 $session = new SessionController();
 $session->ensureVerifiedUserSession();
 
+// instantiate working hours class
+$wh = new WorkingHours();
 
-/* processing of working start goes here */
+/* process start working request */
+$rowId = $_SESSION["wh_id"] = $wh->startWorking($_SESSION["user_id"]);
+
 echo JsonHttp::okResp([
-    "action" => "start working",
     "data" => [
-        "loggedIn" => true,
-        "userRowId" => $_SESSION["user_id"], 
-        "userId" => $_SESSION["user_uid"],
-        "userName" => $_SESSION["user_name"],
-        "userEmail" => $_SESSION["user_email"],
-        "userVerified" => $_SESSION["user_verified"] === 1 ? true : false,
-        "userTimestamp" => $_SESSION["user_timestamp"],
+        "whRowId" => $rowId,
     ]
 ]);
 

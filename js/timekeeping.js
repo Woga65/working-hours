@@ -40,13 +40,24 @@ function initApp() {
 
 /* event listener on start button click */
 async function startButtonListener(e) {
-    console.log('start click');
+    await submitRequest('public/api/startworking', {})
+        .then(result => {
+            console.log(result);
+        });
+    this.setAttribute("disabled", "");
+    document.getElementById('stop-button').removeAttribute('disabled');
 }
 
 
 /* event listener on stop button click */
 async function stopButtonListener(e) {
-    console.log('stop click');
+    console.log(this);
+    await submitRequest('public/api/endworking', {})
+        .then(result => {
+            console.log(result);
+        });
+    this.setAttribute("disabled", "");
+    document.getElementById('start-button').removeAttribute('disabled');
 }
 
 

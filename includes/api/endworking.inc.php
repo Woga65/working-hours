@@ -5,19 +5,20 @@ HttpMisc::allowMethods(['POST']);
 $session = new SessionController();
 $session->ensureVerifiedUserSession();
 
+// instantiate working hours class
+$wh = new WorkingHours();
 
-/* processing of working end goes here */
-echo JsonHttp::okResp([
-    "action" => "start working",
-    "data" => [
-        "loggedIn" => true,
-        "userRowId" => $_SESSION["user_id"], 
-        "userId" => $_SESSION["user_uid"],
-        "userName" => $_SESSION["user_name"],
-        "userEmail" => $_SESSION["user_email"],
-        "userVerified" => $_SESSION["user_verified"] === 1 ? true : false,
-        "userTimestamp" => $_SESSION["user_timestamp"],
-    ]
-]);
+// ensure wh_id session variable is set
+$_SESSION["wh_id"] = $_SESSION["wh_id"] ?? "";
+
+// process stop working request
+$result = $wh->stopWorking($_SESSION["wh_id"]);
+
+// remove wh_id from the session
+unset($_SESSION["wh_id"]);
+
+echo $result 
+    ? JsonHttp::okResp([])
+    : JsonHttp::errResp("work not started yet");
 
 exit();
