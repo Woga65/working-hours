@@ -8,8 +8,6 @@ $msg = (new CreateTables)->createUserTable()
     ? "table created"
     : "table exists";
 
-$x = (new CreateTables)->createWorkinHoursTable();
-
 echo JsonHttp::okResp([
     "msg" => $msg,
     "langs" => $langs,
