@@ -21,4 +21,4 @@ JavaScript (ES6), Web Components, object oriented PHP 8.x, MySql/MariaDB, HTML, 
 
 Vanilla JS, PHP 8.x, MySQL, no libraries, no frameworks.
 A PHP enabled web server is needed for the login system and the backend.
-Routs need to be configured via .htacess or similar.
+Routes need to be configured via .htacess or similar.

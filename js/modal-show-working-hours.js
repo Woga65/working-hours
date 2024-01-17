@@ -16,9 +16,18 @@ function showWorkingHoursModal() {
 
 
 /** render working hours modal */
-function renderWorkingHoursModal(topic) {
+async function renderWorkingHoursModal(topic) {
+    const login = document.getElementById("ws-login");
+    //await login.submitRequest('public/api/workinghours', {})
+        //.then(result => {
+        //    if (result.ok) {
+        //    
+        //    } else {
+        //
+        //    }  
+        //});
     const modal = document.getElementById("modal-container");
-    modal.innerHTML = modalTemplate(topic, { workingHours: [{from: "8:30", to: "17:33"}, {from: "20.12", to: "21.46"},] }); //localize().iconBar.helpItems });
+    modal.innerHTML = modalTemplate(topic, { workingHours: [{from: "8:30", to: "17:33"}, {from: "20.12", to: "21.46"},] });
     addModalListeners(topic);
 }
 

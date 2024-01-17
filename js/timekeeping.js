@@ -20,6 +20,7 @@ function init() {
             initApp();                          //initialize application
             hideLoginPage();                    //hide login page
         } else {
+            removeButtonListeners();            //clear button listeners
             showLoginPage();                    //show user login
         }
     });
@@ -27,7 +28,33 @@ function init() {
 }
 
 
-//initialize kanban board
+/* initialize timekeeping App */
 function initApp() {
-    return;
+    const startButton = document.getElementById('start-button');
+    const stopButton = document.getElementById('stop-button');
+    startButton.addEventListener('click', startButtonListener);
+    stopButton.addEventListener('click', stopButtonListener);
+}
+
+
+/* event listener on start button click */
+async function startButtonListener(e) {
+    const login = document.getElementById('ws-login');
+    console.log('start click');
+}
+
+
+/* event listener on stop button click */
+async function stopButtonListener(e) {
+    const login = document.getElementById('ws-login');
+    console.log('stop click');
+}
+
+
+/* remove start and stop button listeners */
+function removeButtonListeners() {
+    const startButton = document.getElementById('start-button');
+    const stopButton = document.getElementById('stop-button');
+    startButton.removeEventListener('click', startButtonListener);
+    stopButton.removeEventListener('click', stopButtonListener);
 }
