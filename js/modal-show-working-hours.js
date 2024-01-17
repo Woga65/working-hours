@@ -1,6 +1,6 @@
 import localize from "./localize.js";
 import { openModal, closeModal } from "./modal.js";
-
+import { submitRequest } from "../components/ws-login/ws-login.js";
 
 const dateInput = {
     value: "",
@@ -17,8 +17,7 @@ function showWorkingHoursModal() {
 
 /** render working hours modal */
 async function renderWorkingHoursModal(topic) {
-    const login = document.getElementById("ws-login");
-    //await login.submitRequest('public/api/workinghours', {})
+    //await submitRequest('public/api/workinghours', {})
         //.then(result => {
         //    if (result.ok) {
         //    

@@ -1,5 +1,6 @@
 import { setupMenuIconBar } from "./menu-icon-bar.js";
 import { initLoginPage, showLoginPage, hideLoginPage } from "./initLoginPage.js";
+import { submitRequest } from "../components/ws-login/ws-login.js";
 
 
 init();
@@ -39,14 +40,12 @@ function initApp() {
 
 /* event listener on start button click */
 async function startButtonListener(e) {
-    const login = document.getElementById('ws-login');
     console.log('start click');
 }
 
 
 /* event listener on stop button click */
 async function stopButtonListener(e) {
-    const login = document.getElementById('ws-login');
     console.log('stop click');
 }
 
