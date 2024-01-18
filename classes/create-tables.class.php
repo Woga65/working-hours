@@ -4,11 +4,11 @@ class CreateTables extends Dbh {
 
     public function createUserTable() {
         $db = $this->connect();
-        $result = $db->query("SHOW TABLES LIKE 'kb_users'");
+        $result = $db->query("SHOW TABLES LIKE 'users'");
         $exists = $result !== false && $result->rowCount() > 0;
         
         if (!$exists) {
-            $sql = "CREATE TABLE IF NOT EXISTS `kb_users` (
+            $sql = "CREATE TABLE IF NOT EXISTS `users` (
                 `user_id` int(11) NOT NULL AUTO_INCREMENT,
                 `user_uid` tinytext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
                 `user_email` tinytext NOT NULL,

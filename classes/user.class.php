@@ -7,7 +7,7 @@ class User extends Dbh {
 
     protected function userExists($uid, $email)
     {
-        $sql = 'SELECT * FROM kb_users WHERE user_uid=? OR user_email=? LIMIT 1;';
+        $sql = 'SELECT * FROM users WHERE user_uid=? OR user_email=? LIMIT 1;';
 
         $stmt = $this
             ->connect()
@@ -32,7 +32,7 @@ class User extends Dbh {
         $vkey = password_hash(date('Y-m-d H:i:s') . $uid, PASSWORD_DEFAULT);
         $values = array($uid, $name, $email, $hashedpwd, $vkey, 0);
 
-        $sql = "INSERT INTO kb_users (user_uid, user_name, user_email, user_pwd, user_vkey, user_verified) VALUES (?, ?, ?, ?, ?, ?);";
+        $sql = "INSERT INTO users (user_uid, user_name, user_email, user_pwd, user_vkey, user_verified) VALUES (?, ?, ?, ?, ?, ?);";
 
         $stmt = $this
             ->connect()
@@ -50,7 +50,7 @@ class User extends Dbh {
 
     public function verifyUser($vkey)
     {
-        $sql = 'SELECT user_name, user_vkey, user_verified FROM kb_users WHERE user_verified = 0 AND user_vkey = ? LIMIT 1;';
+        $sql = 'SELECT user_name, user_vkey, user_verified FROM users WHERE user_verified = 0 AND user_vkey = ? LIMIT 1;';
 
         $stmt = $this
             ->connect()
@@ -68,7 +68,7 @@ class User extends Dbh {
 
         $this->readRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $sql ="UPDATE kb_users SET user_verified = 1 WHERE user_vkey = ? LIMIT 1;";
+        $sql ="UPDATE users SET user_verified = 1 WHERE user_vkey = ? LIMIT 1;";
 
         $stmt = $this
             ->connect()
