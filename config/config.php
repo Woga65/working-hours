@@ -10,7 +10,7 @@ return [
     "verification"  => [
         "subject"   => "your registration: Timekeeping Project",
         "from"      => "From: Timekeeping <noreply@ws-timekeeping.de>",
-        "scriptUrl" => "https://wolfgang-siebert.de/projects/login-component/verify.php", 
+        "scriptUrl" => "https://wolfgang-siebert.de/projects/timekeeping/verify.php", 
     ],
     "notification"  => [
         "recipient" => "woga@mytsa.de",
