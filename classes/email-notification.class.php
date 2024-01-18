@@ -6,7 +6,7 @@ class EmailNotification {
     public static function startWorking() 
     {
         $config = App::resolve("config")["notification"];
-        $message = "{$_SESSION['user_name']} {$config['startMsg']}\r\n";
+        $message = "{$_SESSION['user_name']} {$config['startMsg']} " . date("Y-m-d H:i:s") . "\r\n";
         self::sendNotification($config, $message);
         return true;
     }
@@ -14,7 +14,7 @@ class EmailNotification {
     public static function stopWorking()
     {
         $config = App::resolve("config")["notification"];
-        $message = "{$_SESSION['user_name']} {$config['stopMsg']}\r\n";
+        $message = "{$_SESSION['user_name']} {$config['stopMsg']} " . date("Y-m-d H:i:s") . "\r\n";
         self::sendNotification($config, $message);
         return true;
     }
