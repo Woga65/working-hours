@@ -61,9 +61,4 @@ function menuIconTemplate(id, desc, html, color, display = '') {
 }
 
 
-function refreshIconsState() {
-    return;
-}
-
-
-export { setupMenuIconBar, refreshIconsState };
+export { setupMenuIconBar };
