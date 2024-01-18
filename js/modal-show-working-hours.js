@@ -89,7 +89,7 @@ function clickedOutside(e) {
 function modalTemplate(data) {
     let dataList = '';
     data.forEach((d, i) => {
-        dataList += modalDataItemTemplate(i, { from: d.wh_start_time.slice(11,16), to: d.wh_end_time.slice(11,16) });
+        dataList += modalDataItemTemplate(i, { from: d.wh_start_time.slice(11,16), to: d.wh_end_time?.slice(11,16) || "xx:xx" });
     });
     return `
         <div id="modal" class="modal">

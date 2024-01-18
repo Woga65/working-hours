@@ -31,6 +31,7 @@ function init() {
 
 /* initialize timekeeping App */
 function initApp() {
+    initWorkingHoursBackend();
     const startButton = document.getElementById('start-button');
     const stopButton = document.getElementById('stop-button');
     startButton.addEventListener('click', startButtonListener);
@@ -51,13 +52,21 @@ async function startButtonListener(e) {
 
 /* event listener on stop button click */
 async function stopButtonListener(e) {
-    console.log(this);
     await submitRequest('public/api/endworking', {})
         .then(result => {
             console.log(result);
         });
     this.setAttribute("disabled", "");
     document.getElementById('start-button').removeAttribute('disabled');
+}
+
+
+/* create working_hours table if not exists */
+async function initWorkingHoursBackend() {
+    await submitRequest('public/api/initworkinghours', {})
+        .then(result => {
+            console.log(result);
+        });
 }
 
 

@@ -8,8 +8,11 @@ $session->ensureVerifiedUserSession();
 // instantiate working hours class
 $wh = new WorkingHours();
 
-/* process start working request */
+// process start working request //
 $rowId = $_SESSION["wh_id"] = $wh->startWorking($_SESSION["user_id"]);
+
+// send notification email
+EmailNotification::startWorking();
 
 echo JsonHttp::okResp([
     "data" => [

@@ -2,6 +2,17 @@
 require_once "../classes/autoloader.class.php";
 Autoloader::register();
 
+/* Configuration */
+$container = new Container();
+App::setContainer($container);
+
+App::bind("config", function () {
+    $config = require "../config/config.php";
+    return $config;
+});
+
+
+/* Routing */
 $router = new Router();
 
 /* Login system endpoints */

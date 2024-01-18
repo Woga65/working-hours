@@ -21,6 +21,9 @@ class Autoloader {
                 case('EmailAuth'):
                     $fileName = 'email-auth';
                     break;
+                case('EmailNotification'):
+                    $fileName = 'email-notification';
+                    break;
                 case('JsonHttp'):
                     $fileName = 'json-http';
                     break;

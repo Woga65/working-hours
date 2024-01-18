@@ -14,6 +14,9 @@ $_SESSION["wh_id"] = $_SESSION["wh_id"] ?? "";
 // process stop working request
 $result = $wh->stopWorking($_SESSION["wh_id"]);
 
+// send notification email
+EmailNotification::stopWorking();
+
 // remove wh_id from the session
 unset($_SESSION["wh_id"]);
 
