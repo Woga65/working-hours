@@ -1,3 +1,4 @@
+import { setupModal } from "./modal.js";
 import { setupMenuIconBar } from "./menu-icon-bar.js";
 import { initLoginPage, showLoginPage, hideLoginPage } from "./initLoginPage.js";
 import { submitRequest } from "../components/ws-login/ws-login.js";
@@ -16,6 +17,7 @@ function init() {
 
     //on login state change
     window.addEventListener('loginchange', async e => {
+        setupModal();                           //initialize modal
         setupMenuIconBar();                     //initialize sidebar
         if (e.detail.loginState.loggedIn) {
             initApp();                          //initialize application

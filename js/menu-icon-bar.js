@@ -1,4 +1,3 @@
-import { setupModal } from "./modal.js";
 import { showHelpModal } from "./modal-show-help.js";
 import { showWorkingHoursModal } from "./modal-show-working-hours.js";
 import { showLoginPage } from "./initLoginPage.js";
@@ -15,7 +14,6 @@ const setupIconFunctions = [
 /** setup the menu icon bar */
 function setupMenuIconBar() {
     if (!document.querySelector(".menu-icon-bar")) {
-        setupModal();
         const parent = document.getElementById("timekeeping-container");
         const menuCol = document.createElement("div");
         menuCol.classList.add("menu-icon-bar");

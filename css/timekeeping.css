@@ -123,7 +123,7 @@ body {
     position: relative;
     /*left: calc(var(--font-size) * 4);*/
     top: calc(var(--font-size) * 0);
-    max-width: 1920px;
+    max-width: 640px;
     margin: 0 auto;
     box-shadow: 0px 0px 20px 1px rgba(30, 30, 30, .1);
 }
@@ -134,7 +134,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    grid-gap: calc(var(--font-size) * 3);
+    gap: calc(var(--font-size) * 1.5);
     margin-left: calc(var(--font-size) * (3.0 + 4.0));
     margin-top: calc(var(--font-size) * 2.5);
     margin-bottom: calc(var(--font-size) * 2.5);
@@ -270,12 +270,23 @@ body {
     aspect-ratio: 1/1;
     background-color: transparent;
     cursor: pointer;
+    transition: opacity,scale 125ms ease-in-out;
+    -webkit-transition: opacity,scale 125ms ease-in-out;    
+}
+
+.start-button:hover:enabled,
+.stop-button:hover:enabled {
+    scale: 1.015;
+    transition: scale 125ms ease-in-out;
+    -webkit-transition: scale 125ms ease-in-out; 
 }
 
 .start-button:disabled,
 .stop-button:disabled {
     opacity: .3;
     cursor: default;
+    transition: opacity 125ms ease-in-out;
+    -webkit-transition: opacity 125ms ease-in-out;
 }
 
 .start-button {
@@ -285,6 +296,7 @@ body {
 }
 
 .stop-button {
+    opacity: .7;
     padding: calc(var(--font-size) * 1.25);
     border: 2px solid var(--primary-accent);
 }
@@ -308,9 +320,10 @@ body {
     pointer-events: none;
 }
 
-@media only screen and (min-width: 428px) {
+@media only screen and (min-width: 395px) {
     .timekeeping {
         flex-direction: row;
+        gap: calc(var(--font-size) * 3);
     }
 }
 
