@@ -27,12 +27,12 @@
             if ($userName === false) {
                 // not exactly one user found
                 echo '<p align="center">Invalid account or account already verified!</p>';
-                echo '<p align="center"><a href="https://wolfgang-siebert.de/projects/kanban/index.html"><br>Please click here, to return to the start page.</a></p>';
+                echo '<p align="center"><a href="https://wolfgang-siebert.de/projects/timekeeping/index.html"><br>Please click here, to return to the start page.</a></p>';
             }
             else {
                 // user successfully verified
                 echo "<h2 align='center'>Congratulations <span>$userName,</span> your account has been verified successfully!<br></h2>";
-                echo '<p align="center"><a href="https://wolfgang-siebert.de/projects/kanban/index.html"><br>Please click here, go to the login page.</a></p>';
+                echo '<p align="center"><a href="https://wolfgang-siebert.de/projects/timekeeping/index.html"><br>Please click here, go to the login page.</a></p>';
             }
         }
         // reject request if $vkey is empty
