@@ -43,10 +43,8 @@ function initApp() {
 
 /* event listener on start button click */
 async function startButtonListener(e) {
-    await submitRequest('public/api/startworking', {})
-        .then(result => {
-            console.log(result);
-        });
+    const result = await submitRequest('public/api/startworking', {});
+    console.log(await result);
     this.setAttribute("disabled", "");
     document.getElementById('stop-button').removeAttribute('disabled');
 }
@@ -54,10 +52,8 @@ async function startButtonListener(e) {
 
 /* event listener on stop button click */
 async function stopButtonListener(e) {
-    await submitRequest('public/api/endworking', {})
-        .then(result => {
-            console.log(result);
-        });
+    const result = await submitRequest('public/api/endworking', {});
+    console.log(await result);
     this.setAttribute("disabled", "");
     document.getElementById('start-button').removeAttribute('disabled');
 }
@@ -65,10 +61,8 @@ async function stopButtonListener(e) {
 
 /* create working_hours table if not exists */
 async function initWorkingHoursBackend() {
-    await submitRequest('public/api/initworkinghours', {})
-        .then(result => {
-            console.log(result);
-        });
+    const result = await submitRequest('public/api/initworkinghours', {});
+    console.log(await result);
 }
 
 

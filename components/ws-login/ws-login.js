@@ -448,7 +448,19 @@ function define(template) {
         async logout() {
             return await submitRequest(endPoints.logout, {})
                 .then(result => this.logoutSuccess(result));
-        }        
+        }
+
+
+        /* disable logout button */
+        disableLogoutButton() {
+            this.shadow.getElementById('logout-submit').setAttribute('disabled', '');
+        }
+
+
+        /* (re)enable logout button */
+        enableLogoutButton() {
+            this.shadow.getElementById('logout-submit').removeAttribute('disabled');
+        }
 
     }
     customElements.define('ws-login', WsLogin);
