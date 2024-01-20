@@ -118,7 +118,7 @@ function modalTemplate(data) {
 function modalDataItemTemplate(index, data) {
     return `
     <li id="modal-data-row-${index}">
-        <div id="modal-data-item-${index}" class="working-hours-item">${data.from} - ${data.to} Uhr</div>
+        <div id="modal-data-item-${index}" class="working-hours-item">${data.from} - ${data.to} ${localize().timeOclock}</div>
     </li>`.trim();
 }
 

@@ -26,6 +26,7 @@ function german() {
         close: 'Schließen',
         delete: 'Löschen',
         enterData: 'Daten eingeben...',
+        timeOclock: 'Uhr',
         iconBar: {
             userTitle: 'Benutzerprofil',
             workingHoursTitle: 'Arbeitszeit',
@@ -45,6 +46,7 @@ function english() {
         close: 'Close',
         delete: 'Delete',
         enterData: 'enter data...',
+        timeOclock: 'h',
         iconBar: {
             userTitle: 'user \nprofile',
             workingHoursTitle: 'Working hours',

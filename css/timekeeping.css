@@ -235,6 +235,7 @@ body {
 
 .modal-help-row p {
     margin: 0;
+    max-width: 800px;
 }
 
 .modal-data .working-hours-item {
