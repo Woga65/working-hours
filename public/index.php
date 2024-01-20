@@ -28,6 +28,7 @@ $router->post('signup', '../includes/signup.inc.php');
 $router->post('api/startworking', '../includes/api/startworking.inc.php');
 $router->post('api/endworking', '../includes/api/endworking.inc.php');
 $router->post('api/workinghours', '../includes/api/workinghours.inc.php');
+$router->post('api/workingstate', '../includes/api/workingstate.inc.php');
 $router->post('api/initworkinghours', '../includes/api/createworkinghourstable.inc.php');
 
 /* Process routes */

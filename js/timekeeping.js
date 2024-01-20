@@ -34,6 +34,7 @@ function init() {
 /* initialize timekeeping App */
 function initApp() {
     initWorkingHoursBackend();
+    getWorkingState().then(result => setInitialButtonState(result));
     const startButton = document.getElementById('start-button');
     const stopButton = document.getElementById('stop-button');
     startButton.addEventListener('click', startButtonListener);
@@ -45,8 +46,7 @@ function initApp() {
 async function startButtonListener(e) {
     const result = await submitRequest('public/api/startworking', {});
     console.log(await result);
-    this.setAttribute("disabled", "");
-    document.getElementById('stop-button').removeAttribute('disabled');
+    setButtonsWorkStarted();
 }
 
 
@@ -54,8 +54,7 @@ async function startButtonListener(e) {
 async function stopButtonListener(e) {
     const result = await submitRequest('public/api/endworking', {});
     console.log(await result);
-    this.setAttribute("disabled", "");
-    document.getElementById('start-button').removeAttribute('disabled');
+    setButtonsWorkNotStarted();
 }
 
 
@@ -66,10 +65,44 @@ async function initWorkingHoursBackend() {
 }
 
 
+/* determine whether a working session is started */
+async function getWorkingState() {
+    const result = await submitRequest('public/api/workingstate', {});
+    console.log("Work started: ", await result);
+    return await result;
+}
+
+
 /* remove start and stop button listeners */
 function removeButtonListeners() {
     const startButton = document.getElementById('start-button');
     const stopButton = document.getElementById('stop-button');
     startButton.removeEventListener('click', startButtonListener);
     stopButton.removeEventListener('click', stopButtonListener);
+}
+
+
+/* restore the button's state according to the working 
+ * session's state after a probably occured page reload */
+function setInitialButtonState(result) {
+    if (!result.ok || !result.data) return;
+    result.data.workingStarted
+        ? setButtonsWorkStarted()
+        : setButtonsWorkNotStarted();
+}
+
+
+/* disable start and logout button, enable stop button */
+function setButtonsWorkStarted() {
+    document.getElementById('stop-button').removeAttribute('disabled');
+    document.getElementById('start-button').setAttribute('disabled', "");
+    document.getElementById('ws-login').disableLogoutButton();
+}
+
+
+/* enable start and logout button, disable stop button */
+function setButtonsWorkNotStarted() {
+    document.getElementById('start-button').removeAttribute('disabled');
+    document.getElementById('stop-button').setAttribute('disabled', "");
+    document.getElementById('ws-login').enableLogoutButton();
 }
