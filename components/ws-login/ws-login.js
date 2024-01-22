@@ -169,6 +169,8 @@ function define(template) {
         }
 
 
+        /* add an event listener that saves the user's language choice
+        and reloads the page after the user has changed the language */ 
         addLanguageLinkListeners() {
             this.languageLinks.forEach(ll => ll.addEventListener('click', e => {
                 saveLang(e.target.textContent);
@@ -283,7 +285,7 @@ function define(template) {
         }
         
         
-        /* hide logout button, show login + signup form */
+        /* hide logout button, show login form */
         logoutSuccess(result, loginData) {
             this.triggerLoginChangeEvent(result);
             this.userDataUpdateTimer(false);
@@ -312,7 +314,7 @@ function define(template) {
         }
         
         
-        /* hide logout button, show login + signup form */
+        /* hide logout button, show login form */
         showLoginForm() {
             this.shadow.getElementById('login-container').style = 'display: block; opacity: 1;';
             this.shadow.getElementById('signup-container').style = 'opacity: 0; display: none;';    

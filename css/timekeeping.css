@@ -271,15 +271,15 @@ body {
     aspect-ratio: 1/1;
     background-color: transparent;
     cursor: pointer;
-    transition: opacity,scale 125ms ease-in-out;
-    -webkit-transition: opacity,scale 125ms ease-in-out;    
+    transition: opacity,border-radius 125ms ease-in-out;
+    -webkit-transition: opacity,border-radius 125ms ease-in-out;    
 }
 
 .start-button:hover:enabled,
 .stop-button:hover:enabled {
-    scale: 1.015;
-    transition: scale 125ms ease-in-out;
-    -webkit-transition: scale 125ms ease-in-out; 
+    border-radius: calc(var(--font-size) * 1.0);;
+    transition: border-radius 125ms ease-in-out;
+    -webkit-transition: border-radius 125ms ease-in-out; 
 }
 
 .start-button:disabled,
@@ -298,7 +298,7 @@ body {
 
 .stop-button {
     opacity: .7;
-    padding: calc(var(--font-size) * 1.25);
+    padding: calc(var(--font-size) * 1.248);
     border: 2px solid var(--primary-accent);
 }
 
@@ -308,16 +308,15 @@ body {
     border-top: 25px solid transparent;
     border-left: 50px solid var(--secondary-accent);
     border-bottom: 25px solid transparent;
-    padding: 0;
+    border-radius: calc(var(--font-size) * .1);
     pointer-events: none;
 }
 
 .stop-button div {
     width: 50px;
     height: 50px;
-    padding: 0;
-    border: 2px solid var(--primary-accent);
     background-color: var(--primary-accent);
+    border-radius: calc(var(--font-size) * .1);
     pointer-events: none;
 }
 

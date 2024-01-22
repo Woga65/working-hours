@@ -9,7 +9,6 @@ echo $isValid
     ?   JsonHttp::okResp([
             "data" => [
                 "loggedIn" => true,
-                "userRowId" => $_SESSION["user_id"], 
                 "userId" => $_SESSION["user_uid"],
                 "userName" => $_SESSION["user_name"],
                 "userEmail" => $_SESSION["user_email"],

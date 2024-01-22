@@ -17,7 +17,6 @@ $user = $loginController->login();
 echo JsonHttp::okResp([
     "data" => [
         "loggedIn" => true,
-        "userRowId" => $user["user_id"], 
         "userId" => $user["user_uid"],
         "userName" => $user["user_name"],
         "userEmail" => $user["user_email"],

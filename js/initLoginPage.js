@@ -1,9 +1,11 @@
+/* setup event listener on backdrop click */
 export function initLoginPage() {
     const login = document.getElementById("login-container");
     login.addEventListener('click', clickedOutside);
 }
 
 
+/* let the login page fade in */
 export function showLoginPage() {
     const login = document.getElementById("login-container");
     login.style.display = "flex";
@@ -11,6 +13,7 @@ export function showLoginPage() {
 }
 
 
+/* let the login page fade out */
 export function hideLoginPage() {
     const login = document.getElementById("login-container");
     login.style.opacity = "0";

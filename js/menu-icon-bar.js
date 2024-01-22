@@ -4,6 +4,7 @@ import { showLoginPage } from "./initLoginPage.js";
 import localize from "./localize.js";
 
 
+/** one function for each menu icon */
 const setupIconFunctions = [
     setupShowWorkingHoursIcon,
     setupUserProfileIcon,
@@ -48,6 +49,16 @@ function setupHelpIcon(parent) {
 }
 
 
+/**
+ * Return a menu item element
+ * 
+ * @param { string } id - id for the menu item
+ * @param { string } desc - text to show on hover
+ * @param { string } html - html entity or image template string to show as an icon
+ * @param { string } color - color for the menu item
+ * @param { string } display - css display
+ * @returns { HTMLElement } - menu icon element
+ */
 function menuIconTemplate(id, desc, html, color, display = '') {
     const icon = document.createElement("div");
     icon.id = id;
