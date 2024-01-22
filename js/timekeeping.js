@@ -67,7 +67,7 @@ async function initWorkingHoursBackend() {
 
 /* determine whether a working session is started */
 async function getWorkingState() {
-    const result = await submitRequest('public/api/workingstate', {});
+    const result = await submitRequest(`public/api/workingstate`, {}, {method: 'GET'});
     console.log("Work started: ", await result);
     return await result;
 }

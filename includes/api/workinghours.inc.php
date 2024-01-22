@@ -1,6 +1,6 @@
 <?php
 
-HttpMisc::allowMethods(['POST']);
+HttpMisc::allowMethods(['GET']);
 
 $session = new SessionController();
 $session->ensureVerifiedUserSession();

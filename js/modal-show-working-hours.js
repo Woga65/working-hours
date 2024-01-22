@@ -20,15 +20,14 @@ function showWorkingHoursModal() {
 /** render working hours modal */
 async function renderWorkingHoursModal() {
     const modal = document.getElementById("modal-container");
-    await submitRequest('public/api/workinghours', { workingDay: dateInput.value.slice(0,10)})
-        .then(result => {
-            if (result.ok) {
-                modal.innerHTML = modalTemplate(result.data);
-            } else {
-                console.log('err: ', result)
-            }
-            addModalListeners();  
-        });
+    const response = await submitRequest(`public/api/workinghours?workingDay=${dateInput.value.slice(0,10)}`, {}, {method: 'GET'});
+    const result = await response;
+    if (!result.ok) {
+        console.log('err: ', result);
+        result.data = [];
+    }
+    modal.innerHTML = modalTemplate(result.data);
+    addModalListeners();
 }
 
 
