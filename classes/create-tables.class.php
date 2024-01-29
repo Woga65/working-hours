@@ -36,7 +36,7 @@ class CreateTables extends Dbh {
             $sql = "CREATE TABLE IF NOT EXISTS `working_hours` (
                 `wh_id` int(11) NOT NULL AUTO_INCREMENT,
                 `wh_uid` int(11) NOT NULL,
-                `wh_end_time` timestamp(6) DEFAULT NULL,
+                `wh_end_time` timestamp(6) NULL DEFAULT NULL,
                 `wh_start_time` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
                 PRIMARY KEY (`wh_id`)
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
