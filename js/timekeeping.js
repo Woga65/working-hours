@@ -44,7 +44,7 @@ function initApp() {
 
 /* event listener on start button click */
 async function startButtonListener(e) {
-    const result = await submitRequest('public/api/startworking', {});
+    const result = await submitRequest('public/api/workinghours/start', {});
     console.log(await result);
     setButtonsWorkStarted();
 }
@@ -52,7 +52,7 @@ async function startButtonListener(e) {
 
 /* event listener on stop button click */
 async function stopButtonListener(e) {
-    const result = await submitRequest('public/api/endworking', {});
+    const result = await submitRequest('public/api/workinghours/end', {});
     console.log(await result);
     setButtonsWorkNotStarted();
 }
@@ -60,14 +60,14 @@ async function stopButtonListener(e) {
 
 /* create working_hours table if not exists */
 async function initWorkingHoursBackend() {
-    const result = await submitRequest('public/api/initworkinghours', {});
+    const result = await submitRequest('public/api/workinghours/init', {});
     console.log(await result);
 }
 
 
 /* determine whether a working session is started */
 async function getWorkingState() {
-    const result = await submitRequest(`public/api/workingstate`, {}, {method: 'GET'});
+    const result = await submitRequest(`public/api/workinghours/state`, {}, {method: 'GET'});
     console.log("Work started: ", await result);
     return await result;
 }

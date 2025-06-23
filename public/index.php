@@ -25,10 +25,10 @@ $router->post('sessionexists', '../includes/sessionexists.inc.php');
 $router->post('signup', '../includes/signup.inc.php');
 
 /* Working hours endpoints */
-$router->post('api/startworking', '../includes/api/startworking.inc.php');
-$router->post('api/endworking', '../includes/api/endworking.inc.php');
-$router->post('api/initworkinghours', '../includes/api/createworkinghourstable.inc.php');
-$router->get('api/workingstate', '../includes/api/workingstate.inc.php');
+$router->post('api/workinghours/start', '../includes/api/startworking.inc.php');
+$router->post('api/workinghours/end', '../includes/api/endworking.inc.php');
+$router->post('api/workinghours/init', '../includes/api/createworkinghourstable.inc.php');
+$router->get('api/workinghours/state', '../includes/api/workingstate.inc.php');
 $router->get('api/workinghours', '../includes/api/workinghours.inc.php');
 
 /* Process routes */
